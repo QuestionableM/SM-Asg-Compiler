@@ -8,6 +8,9 @@
 namespace File
 {
 	bool Exists(const std::wstring& path);
+	bool IsDirectory(const std::wstring& path);
+	bool IsRegularFile(const std::wstring& path);
+	bool IsPathValid(const std::wstring& path);
 
 	std::wstring OpenFileDialog(
 		const std::wstring& title,

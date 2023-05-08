@@ -65,6 +65,8 @@ struct ImageData
 	template<int t_channel_id>
 	void CombineFibitmaps(FIBITMAP* output)
 	{
+		if (!this) return;
+
 		RGBQUAD v_rgb_data, v_src_data;
 
 		for (int y = 0; y < this->height; y++)
@@ -130,7 +132,7 @@ std::wstring MixerCore::RunMixer(
 	v_image_array[2]->CombineFibitmaps<2>(v_output_image);
 	v_image_array[3]->CombineFibitmaps<3>(v_output_image);
 
-	FreeImage_SaveU(FIF_TARGA, v_output_image, L"./OutputImage.tga");
+	FreeImage_SaveU(FIF_TARGA, v_output_image, MixerCore::LastPickedPath.c_str());
 	FreeImage_Unload(v_output_image);
 
 	for (std::size_t b = 0; b < 4; b++)

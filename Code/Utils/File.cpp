@@ -14,6 +14,36 @@ bool File::Exists(const std::wstring& path)
 	return v_exists && !v_ec;
 }
 
+bool File::IsDirectory(const std::wstring& path)
+{
+	namespace fs = std::filesystem;
+
+	std::error_code v_ec;
+	const bool v_is_dir = fs::is_directory(path, v_ec);
+
+	return v_is_dir && !v_ec;
+}
+
+bool File::IsRegularFile(const std::wstring& path)
+{
+	namespace fs = std::filesystem;
+
+	std::error_code v_ec;
+	const bool v_is_file = fs::is_regular_file(path, v_ec);
+
+	return v_is_file && !v_ec;
+}
+
+bool File::IsPathValid(const std::wstring& path)
+{
+	namespace fs = std::filesystem;
+
+	std::error_code v_ec;
+	const bool exists = fs::exists(path, v_ec);
+
+	return !v_ec;
+}
+
 std::wstring File::OpenFileDialog(
 	const std::wstring& title,
 	FILEOPENDIALOGOPTIONS options,

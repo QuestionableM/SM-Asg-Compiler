@@ -77,18 +77,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Build\$(PlatformShortName)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Junk\$(PlatformShortName)-$(Configuration)\</IntDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Build\$(PlatformShortName)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Junk\$(PlatformShortName)-$(Configuration)\</IntDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Build\$(PlatformShortName)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Junk\$(PlatformShortName)-$(Configuration)\</IntDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Build\$(PlatformShortName)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Junk\$(PlatformShortName)-$(Configuration)\</IntDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -151,13 +155,19 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Gui\GuiCommon.cpp" />
     <ClCompile Include="Code\Gui\MainGui.cpp" />
+    <ClCompile Include="Code\Gui\PathSelector.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\TextureMixer.cpp" />
     <ClCompile Include="Code\Utils\File.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Gui\GuiCommon.hpp" />
     <ClInclude Include="Code\Gui\MainGui.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Code\Gui\PathSelector.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Code\TextureMixer.hpp" />
@@ -173,6 +183,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Code\Gui\MainGui.resx">
       <DependentUpon>Code\Gui\MainGui.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Gui\PathSelector.resx">
+      <DependentUpon>Code\Gui\PathSelector.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
